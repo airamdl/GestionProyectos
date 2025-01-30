@@ -140,7 +140,7 @@ class WelcomeScreen : Screen {
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFdf1818))
                 ) {
                     Text(
-                        text = "Desconectar",
+                        text = "Disconect",
                         color = Color.White
                     )
                 }

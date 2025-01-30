@@ -48,7 +48,7 @@ class LoginScreen : Screen {
                     .width(300.dp)
                     .clip(RoundedCornerShape(12.dp))
                     .background(Color.White)
-                    .shadow(16.dp, shape = RoundedCornerShape(12.dp))
+
                     .padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
@@ -68,9 +68,14 @@ class LoginScreen : Screen {
                     onClick = {
                         navigator?.push(WelcomeScreen())
                     },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Color.DarkGray)
+
                 ) {
-                    Text("Iniciar sesión")
+                    Text(
+                        "Iniciar sesión"
+                    )
                 }
             }
         }
