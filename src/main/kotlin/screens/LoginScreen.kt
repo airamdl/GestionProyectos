@@ -23,6 +23,7 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 
 class LoginScreen : Screen {
     @Composable
+    @Preview
     override fun Content() {
         val navigator = LocalNavigator.current
         var user by remember { mutableStateOf("") }
