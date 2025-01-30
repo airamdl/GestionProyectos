@@ -12,78 +12,64 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
 
-@Composable
-@Preview
-fun LoginScreen() {
-    var user by remember { mutableStateOf("") }
-    var passwd by remember { mutableStateOf("") }
-
-    MaterialTheme {
+class LoginScreen : Screen {
+    @Composable
+    override fun Content() {
+        val navigator = LocalNavigator.current
+        var user by remember { mutableStateOf("") }
+        var passwd by remember { mutableStateOf("") }
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(color = Color(0xFFd5d5d5))
-                .padding(16.dp),
+                .background(Color(0xFFd5d5d5)),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-
             Text(
                 text = "Log in",
                 fontSize = 32.sp,
-                fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.Cursive,
-                color = Color(0xFF333555)
+                color = Color.Black,
+                fontWeight = FontWeight.Bold
             )
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-
-            Box(
+            Spacer(modifier = Modifier.height(24.dp))
+            Column(
                 modifier = Modifier
-                    .width(400.dp)
-                    .padding(16.dp)
+                    .width(300.dp)
                     .clip(RoundedCornerShape(12.dp))
                     .background(Color.White)
-                    .padding(24.dp),
-                contentAlignment = Alignment.Center
+                    .shadow(16.dp, shape = RoundedCornerShape(12.dp))
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                OutlinedTextField(
+                    value = user,
+                    onValueChange = { user = it },
+                    label = { Text("Usuario") },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                OutlinedTextField(
+                    value = passwd,
+                    onValueChange = { passwd = it },
+                    label = { Text("Contraseña") },
+                    modifier = Modifier.fillMaxWidth()
+                )
+                Button(
+                    onClick = {
+                        navigator?.push(WelcomeScreen())
+                    },
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    OutlinedTextField(
-                        value = user,
-                        onValueChange = { user = it },
-                        modifier = Modifier.fillMaxWidth(),
-                        label = { Text("User") }
-                    )
-                    OutlinedTextField(
-                        value = passwd,
-                        onValueChange = { passwd = it },
-                        modifier = Modifier.fillMaxWidth(),
-                        label = { Text("Password") }
-                    )
-
-                    Spacer(modifier = Modifier.height(16.dp))
-
-                    Button(
-                        onClick = {
-                            //navigator?.push
-                        },
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(8.dp)
-                    ) {
-                        Text(text = "Log In", fontSize = 16.sp, fontWeight = FontWeight.Bold)
-
-                    }
+                    Text("Iniciar sesión")
                 }
             }
         }
