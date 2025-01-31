@@ -86,7 +86,7 @@ class Colores(private val modo: ModoColor) {
     }
 }
 
-// Extensión para validar colores HEX
+
 private fun validarHEX(valor: String) {
     require(valor.matches(Regex("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\$"))) {
         "Formato HEX inválido: $valor"
