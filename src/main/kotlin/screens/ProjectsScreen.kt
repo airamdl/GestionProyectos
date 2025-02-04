@@ -16,6 +16,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.Navigator
+
+
+
+
 
 class ProjectsScreen : Screen {
     @Composable
@@ -44,10 +49,11 @@ class ProjectsScreen : Screen {
                     fontWeight = FontWeight.Bold,
 
 
-                )
+                    )
             }
-
             Spacer(modifier = Modifier.weight(1f))
+
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -79,3 +85,4 @@ class ProjectsScreen : Screen {
 
     }
 }
+

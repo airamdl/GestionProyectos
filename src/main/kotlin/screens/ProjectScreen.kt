@@ -14,7 +14,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 
 @Composable
-fun ProjectScreen() :Screen{
+fun ProjectScreen() :Screen {
     val navigator = LocalNavigator.current
     val project = Project(
         name = "Proyecto Ejemplo",
@@ -66,7 +66,7 @@ fun ProjectScreen() :Screen{
 
 
         Button(
-            onClick = { navigator?.push(TareaScreen())},
+            onClick = { navigator?.push(TareaScreen()) },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = MaterialTheme.colors.primary,
